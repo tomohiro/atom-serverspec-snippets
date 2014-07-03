@@ -1,4 +1,4 @@
-Serverspec Snippets
+Serverspec Snippets in Atom
 ================================================================================
 
 Snippets to help you writing [Serverspec](http://serverspec.org) specs in
