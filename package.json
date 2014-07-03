@@ -1,0 +1,12 @@
+{
+  "name": "serverspec-snippets",
+  "version": "0.1.0",
+  "description": "Snippets to help you writing Serverspec specs",
+  "repository": "https://github.com/Tomohiro/atom-serverspec-snippets",
+  "license": "MIT",
+  "engines": {
+    "atom": ">0.50.0"
+  },
+  "dependencies": {
+  }
+}

@@ -1,0 +1,310 @@
+'.source.ruby':
+  'Linux cgroup resource type':
+    'prefix': 'cgroup'
+    'body': "describe cgroup('${1:description}') do\n  its('${2:cgroup parameters}') { should $0 }\nend"
+  'Command resource type':
+    'prefix': 'command'
+    'body': "describe command('${1:command}') do\n  ${2:TARGET}\nend"
+  'return_stdout matcher':
+    'prefix': 'return_stdout'
+    'body': "it { should return_stdout '${1:pattern}' }"
+  'return_stderr matcher':
+    'prefix': 'return_stderr'
+    'body': "it { should return_stderr '${1:pattern}' }"
+  'return_exit_status matcher':
+    'prefix': 'return_exit_status'
+    'body': 'it { should return_exit_status ${1:status_code} }'
+  'Command resource type with its(:stdout) matcher':
+    'prefix': 'command_stdout'
+    'body': "describe command('${1:command}') do\n  its(:stdout) { should match /${2:pattern}/ }\nend"
+  'Command resource type with its(:stderr) matcher':
+    'prefix': 'command_stderr'
+    'body': "describe command('${1:command}') do\n  its(:stderr) { should match /${2:pattern}/ }\nend"
+  'Cron resource type with have_entry matcher':
+    'prefix': 'cron'
+    'body': "describe cron do\n  it { should have_entry '${1:cron}' }\nend"
+  'Cron resource type with have_entry matcher with specific username':
+    'prefix': 'cron_with_user'
+    'body': "describe cron do\n  it { should have_entry('${1:cron}').with_user('${2:user}') }\nend"
+  'Default gateway resource type':
+    'prefix': 'default_gateway'
+    'body': "describe default_gateway do\n  its(:ipaddress) { should eq '${1:ipaddress}' }\n  its(:interface) { should eq '${2:interface}' }\nend"
+  'File and directory resource type':
+    'prefix': 'file'
+    'body': "describe file('${1:file}') do\n  ${2:TARGET}\nend"
+  'be_file matcher':
+    'prefix': 'be_file'
+    'body': 'it { should be_file }'
+  'be_directory matcher':
+    'prefix': 'be_directory'
+    'body': 'it { should be_directory }'
+  'be_socket matcher':
+    'prefix': 'be_socket'
+    'body': 'it { should be_socket }'
+  'File resource type with its(:content)':
+    'prefix': 'content'
+    'body': "its(:content) { should match /${1:pattern}/ }"
+  'be_mode matcher':
+    'prefix': 'be_mode'
+    'body': 'it { should be_mode ${1:mode} }'
+  'be_owned_by matcher':
+    'prefix': 'be_owned_by'
+    'body': "it { should be_owned_by '${1:owner}' }"
+  'be_grouped_into matcher':
+    'prefix': 'be_grouped_into'
+    'body': "it { should be_grouped_into '${1:group}' }"
+  'be_linked_to matcher':
+    'prefix': 'be_linked_to'
+    'body': "it { should be_linked_to '${1:link}' }"
+  'be_readable matcher':
+    'prefix': 'be_readable'
+    'body': 'it { should be_readable }'
+  'be_readable matcher with owner, group members, others':
+    'prefix': 'be_readable_by'
+    'body': "it { should by_readable.by('${1:owner, group members, others}') }"
+  'be_readable matcher with specific user':
+    'prefix': 'be_readable_by_user'
+    'body': "it { should by_readable.by_user('${1:username}') }"
+  'be_writable matcher':
+    'prefix': 'be_writable'
+    'body': 'it { should be_writable }'
+  'be_writable matcher with owner, group members, others':
+    'prefix': 'be_writable_by'
+    'body': "it { should by_writable.by('${1:owner, group members, others}') }"
+  'be_writable matcher with specific user':
+    'prefix': 'be_writable_by_user'
+    'body': "it { should by_writable.by_user('${1:username}') }"
+  'be_executable matcher':
+    'prefix': 'be_executable'
+    'body': 'it { should be_executable }'
+  'be_executable matcher with owner, group members, others':
+    'prefix': 'be_executable_by'
+    'body': "it { should by_executable.by('${1:owner, group members, others}') }"
+  'be_executable matcher with specific user':
+    'prefix': 'be_executable_by_user'
+    'body': "it { should by_executable.by_user('${1:username}') }"
+  'be_mounted matcher':
+    'prefix': 'be_mounted'
+    'body': 'it { should be_mounted }'
+  'be_mounted matcher with type':
+    'prefix': 'be_mounted_with_type'
+    'body': "it { should be_mounted.with( :type => '${1:type}' ) }"
+  'be_mounted matcher with options':
+    'prefix': 'be_mounted_with_options'
+    'body': "it { should be_mounted.with( :options => { ${1:option} } ) }"
+  'be_mounted matcher with attributes':
+    'prefix': 'be_mounted_only_with'
+    'body': "it do\n  should be_mounted.only_with(\n    :device  => '${1:device}',\n    :type    => '${2:type}',\n    :options => {\n      ${2:options}\n    }\n  )\nend"
+  'be_version matcher':
+    'prefix': 'be_version'
+    'body': "it { should be_version('${1:version}') }"
+  'match_md5checksum matcher':
+    'prefix': 'match_md5checksum'
+    'body': "it { should match_md5checksum '${1:md5checksum}' }"
+  'match_sha256checksum matcher':
+    'prefix': 'match_sha256checksum'
+    'body': "it { should match_sha256checksum '${1:sha256checksum}' }"
+  'Group resource type':
+    'prefix': 'group'
+    'body': "describe group('${1:group}') do\n  ${2:TARGET}\nend"
+  'exists matcher':
+    'prefix': 'exists'
+    'body': 'it { should exist }'
+  'have_gid matcher':
+    'prefix': 'have_gid'
+    'body': "it { should have_gid ${1:gid} }"
+  'Host resource type':
+    'prefix': 'host'
+    'body': "describe host('${1:hostname}') do\n  ${2:TARGET}\nend"
+  'be_resolvable matcher':
+    'prefix': 'be_resolvable'
+    'body': 'it { should be_resolvable }'
+  'be_resolvable matcher with hosts target':
+    'prefix': 'be_resolvable_by_hosts'
+    'body': "it { should be_resolvable.by('hosts') }"
+  'be_resolvable matcher with dns target':
+    'prefix': 'be_resolvable_by_dns'
+    'body': "it { should be_resolvable.by('dns') }"
+  'be_reachable matcher':
+    'prefix': 'be_reachable'
+    'body': 'it { should be_reachable }'
+  'be_reachable matcher with options':
+    'prefix': 'be_reachable_with'
+    'body': 'it { should be_reachable.with( ${1:options} ) }'
+  'Host resource type with its(:address) matcher':
+    'prefix': 'host_address'
+    'body': "describe host('${1:host}') do\n  its(:ipaddress) { should eq '${2:ipaddress}' }\nend"
+  'IIS Application Pool resource type':
+    'prefix': 'iis_app_pool'
+    'body': "describe iis_app_pool('${1:Default App Pool}') do\n  ${2:TARGET}\nend"
+  'have_dotnet_verion matcher':
+    'prefix': 'have_dotnet_version'
+    'body': "it { should have_dotnet_version('${1:version}') }"
+  'IIS Website resource type':
+    'prefix': 'iis_website'
+    'body': "describe iis_website('${1:Default Website}') do\n  ${2:TARGET}\nend"
+  'be_enabled matcher':
+    'prefix': 'be_enabled'
+    'body': 'it { should be_enabled }'
+  'be_running matcher':
+    'prefix': 'be_running'
+    'body': 'it { should be_running }'
+  'be_in_app_pool matcher':
+    'prefix': 'be_in_app_pool'
+    'body': "it { should be_in_app_pool('${1:Default App Pool}') }"
+  'have_physial_path matcher':
+    'prefix': 'have_physial_path'
+    'body': "it { have_physial_path('${1:Physial Path}') }"
+  'Network interface resource type':
+    'prefix': 'interface'
+    'body': "describe interface('${1:interface}') do\n  ${2:TARGET}\nend"
+  'Network interface resource type with its(:speed) matcher':
+    'prefix': 'interface_speed'
+    'body': "describe interface('${1:interface}') do\n  its(:speed) { should eq ${2:speed} }\nend"
+  'have_ipv4_address matcher':
+    'prefix': 'have_ipv4_address'
+    'body': "it { should have_ipv4_address('${1:address}') }"
+  'Ipfilter resource type':
+    'prefix': 'ipfilter'
+    'body': "describe ipfilter do\n  it { should have_rule '${1:ipfilter rule}' }\nend"
+  'have_rule matcher':
+    'prefix': 'have_rule'
+    'body': "it { should have_rule ${1:rule} }"
+  'Ipnat resource type':
+    'prefix': 'ipnat'
+    'body': "describe ipnat do\n  it { should _have_rule '${1:ipnat rule}' }\nend"
+  'Iptables resource type':
+    'prefix': 'iptables'
+    'body': "describe iptables do\n  it { should have_rule '${1:iptables rule}' }\nend"
+  'have_rule matcher with specific table, chain':
+    'prefix': 'have_rule_table_chain'
+    'body': "it { should have_rule('${1:rule}').with_table('${2:table}').with_chain('${3:chain}') }"
+  'Kernel module resource type':
+    'prefix': 'kernel_module'
+    'body': "describe kernel_module('${1:module}') do\n  it { should be_loaded }\nend"
+  'be_loaded matcher':
+    'prefix': 'be_loaded'
+    'body': 'it { should be_loaded }'
+  'Linux kernel parameter resource types':
+    'prefix': 'linux_kernel_parameters'
+    'body': "describe 'Linux kernel parameters' do\n  context linux_kernel_parameter('${1:linux kernel parameter}') do\n    its(:value) { should eq ${2:value} }\n  end\nend"
+  'Linux kernel parameter resource types':
+    'prefix': 'linux_kernel_parameter'
+    'body': "describe linux_kernel_parameter('${1:linux kernel parameter}') do\n  its(:value) { should be eq '${2:value}' }\nend"
+  'LXC(Linux Container) resource type':
+    'prefix': 'lxc'
+    'body': "describe lxc('${1:container}') do\n  ${2:TARGET}\nend"
+  'Mail alias resource type':
+    'prefix': 'mail_alias'
+    'body': "describe mail_alias('${1:alias}') do\n  it { should be_aliased_to '${2:user}' }\nend"
+  'Package resource type':
+    'prefix': 'package'
+    'body': "describe package('${1:package}') do\n  it { should be_installed }\nend"
+  'Package resource type with installed by rubygems and specific version':
+    'prefix': 'package_installed_by_gem'
+    'body': "describe package('${1:package}') do\n  it { should be_installed.by('gem').with_version('${2:version}') }\nend"
+  'be_installed matcher':
+    'prefix': 'be_installed'
+    'body': 'it { should be_installed }'
+  'be_installed_by matcher':
+    'prefix': 'be_installed_by'
+    'body': "it { should be_installed.by('${1:feature}') }"
+  'PHP config resource type':
+    'prefix': 'php_config'
+    'body': "describe php_config('${1:php_config}') do\n  its(:value) { should eq '${2:value}' }\nend"
+  'PHP config parameters':
+    'prefix': 'php_config_parameters'
+    'body': "describe 'PHP config prameters' do\n  context php_config('${1:php_config}') do\n    its(:value) { should eq '${2:value}'}\n  end\nend"
+  'Port resource type':
+    'prefix': 'port'
+    'body': "describe port(${1:port number}) do\n  ${2:TARGET}\nend"
+  'be_listening matcher':
+    'prefix': 'be_listening'
+    'body': 'it { should be_listening }'
+  'be_listening matcher with specific protocol':
+    'prefix': 'be_listening_with'
+    'body': "it { should be_listening.with('${1:protocol}') }"
+  'PPA resource type':
+    'prefix': 'ppa'
+    'body': "describe ppa('${1:username/reponame}') do\n  ${2:TARGET}\nend"
+  'Process resoruce type':
+    'prefix': 'process'
+    'body': "describe process('${1:process}') do\n  ${2:TARGET}\nend"
+  'Process resoruce type with parameter':
+    'prefix': 'process_parameter'
+    'body': "describe process('${1:process}') do\n  its(:args) { should match /${2:args}/ }\nend"
+  'Routing table resource type':
+    'prefix': 'routing_table'
+    'body': "describe routing_table do\n  it do\n    should have_entry(\n      :destination => '${1:destination address}',\n      :interface   => '${2:network interface}',\n      :gateway     => '${3:gateway address}'\n    )\n  end\nend"
+  'SELinux resource type':
+    'prefix': 'selinux'
+    'body': "describe selinux do\n  ${1:TARGET}\nend"
+  'be_disabled matcher':
+    'prefix': 'be_disabled'
+    'body': 'it { should be_disabled }'
+  'be_enforcing matcher':
+    'prefix': 'be_enforcing'
+    'body': 'it { should be_enforcing }'
+  'be_permissive matcher':
+    'prefix': 'be_permissive'
+    'body': 'it { should be_permissive }'
+  'Service resource type':
+    'prefix': 'service'
+    'body': "describe service('${1:service}') do\n  ${2:TARGET}\nend"
+  'be_enabled matcher with run level':
+    'prefix': 'be_enabled_with_level'
+    'body': "it { should be_enabled.with_level(${1:run level}) }"
+  'be_running matcher with supervisor':
+    'prefix': 'be_running_under_supervisor'
+    'body': "describe service('${1:service}') do\n  it { should be_running.under('supervisor') }\nend"
+  'be_monitored_by matcher':
+    'prefix': 'be_monitored_by'
+    'body': "it { should be_monitored_by('${1:monitor}') }"
+  'have_start_mode matcher':
+    'prefix': 'have_start_mode'
+    'body': "it { should have_start_mode('${1:mode}') }"
+  'User resource type':
+    'prefix': 'user'
+    'body': "describe user('${1:user}') do\n  ${2:TARGET}\nend"
+  'belong_to_group matcher':
+    'prefix': 'belong_to_group'
+    'body': "it { should belong_to_group '${1:group}' }"
+  'have_uid matcher':
+    'prefix': 'have_uid'
+    'body': "it { should have_uid ${1:uid} }"
+  'have_home_directory matcher':
+    'prefix': 'have_home_directory'
+    'body': "it { should have_home_directory '${1:home directory path}' }"
+  'have_login_shell matcher':
+    'prefix': 'have_login_shell'
+    'body': "it { should have_login_shell '${1:login shell}' }"
+  'have_authroized_key':
+    'prefix': 'have_authorized_key'
+    'body': "it { should have_auhtorized_key '${1:authorized key}' }"
+  'Windows Feature resource type':
+    'prefix': 'windows_feature'
+    'body': "describe windows_feature('${1:Windows Feature}') do\n  it { be_installed }\nend"
+  'Windows Registry Key resource type':
+    'prefix': 'windows_registry_key'
+    'body': "describe windows_registry_key('${1:Windows Registry Key}') do\n  ${2:TARGET}\nend"
+  'have_property matcher':
+    'prefix': 'have_property'
+    'body': "it { should have_property('${1:property}') }"
+  'have_property matcher with data type':
+    'prefix': 'have_property_type'
+    'body': "it { should have_property('${1:property}', ${2:data type}) }"
+  'have_value matcher':
+    'prefix': 'have_value'
+    'body': "it { should have_value('${1:value}') }"
+  'have_property_value matcher':
+    'prefix': 'have_property_value'
+    'body': "it { should have_property_value('${1:property}', ${2:data type}, '${3:value}') }"
+  'Yumrepo resource type':
+    'prefix': 'yumrepo'
+    'body': "describe yumrepo('${1:yumrepo}') do\n  ${2:TARGET}\nend"
+  'ZFS resoruce type':
+     'prefix': 'zfs'
+     'body': "describe zfs('${1:zfs pool}') do\n  ${2:TARGET}\nend"
+  'have_property matcher to ZFS resource type':
+    'prefix': 'zfs_have_property'
+    'body': "it { should have_property 'mountpoint' => '${2:mount point}', 'compression' => '${3:value}' }\n"
