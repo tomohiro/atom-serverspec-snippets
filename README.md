@@ -1,6 +1,8 @@
 Serverspec Snippets in Atom
 ================================================================================
 
+[![apm](https://img.shields.io/apm/v/serverspec-snippets.svg?style=flat-square)](https://atom.io/packages/serverspec-snippets)
+
 Snippets to help you writing [Serverspec](http://serverspec.org) specs in
 [Atom](http://atom.io)
 
