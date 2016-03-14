@@ -280,7 +280,7 @@
     'body': "it { should have_login_shell '${1:login shell}' }"
   'have_authroized_key':
     'prefix': 'have_authorized_key'
-    'body': "it { should have_auhtorized_key '${1:authorized key}' }"
+    'body': "it { should have_authorized_key '${1:authorized key}' }"
   'Windows Feature resource type':
     'prefix': 'windows_feature'
     'body': "describe windows_feature('${1:Windows Feature}') do\n  it { be_installed }\nend"
