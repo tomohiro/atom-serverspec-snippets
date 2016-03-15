@@ -529,6 +529,6 @@ end
 LICENSE
 --------------------------------------------------------------------------------
 
-&copy; 2014 Tomohiro TAIRA.
-This project is licensed under the MIT license.
-See LICENSE for details.
+&copy; 2014 - 2016 Tomohiro TAIRA.
+
+This project is licensed under the MIT license. See [LICENSE](LICENSE) for details.
