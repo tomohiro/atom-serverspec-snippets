@@ -185,7 +185,7 @@
   'be_loaded matcher':
     'prefix': 'be_loaded'
     'body': 'it { should be_loaded }'
-  'Linux kernel parameter resource types':
+  'Linux kernel parameters resource types':
     'prefix': 'linux_kernel_parameters'
     'body': "describe 'Linux kernel parameters' do\n  context linux_kernel_parameter('${1:linux kernel parameter}') do\n    its(:value) { should eq ${2:value} }\n  end\nend"
   'Linux kernel parameter resource types':
